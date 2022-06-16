@@ -5,12 +5,13 @@ import { CoverPiclanding4 } from "./cover4"
 import { CoverPiclanding3 } from "./coverlanding3"
 import { CoverPicTop } from "./coverPageTop1"
 import { CoverPic } from "./CoverPic"
+import { Navbar } from "./navbar"
 
 export const LandingPage = () => {
-  return (
+    return (
         <div>
             <div id="main">
-                <div>navbar</div>
+               
                 <div id="sliding_Window">
                     <CoverPicTop />
                 </div>
@@ -104,20 +105,20 @@ export const LandingPage = () => {
                         </div>
                     </div>
                     <div>
-                    <div id="l4">
-                    <p id="l2">Beverages</p>
-                    </div>
-                    <Link to="/Beverages">
-                        <div id="img9">
-                            <div><img src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/f5c62903-082f-434b-aaae-c7f14473b6c8/57f3336c-a22d-477f-bc3c-a12116682713/hp_soft-deinks-beveragesStorefront_m_250522_560x378_01.jpg" /></div>
-                            <div id="lp8">
-                                <img src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/f5c62903-082f-434b-aaae-c7f14473b6c8/57f3336c-a22d-477f-bc3c-a12116682713/hp_juices-beveragesStorefront_m_250522_02.jpg" />
-                                <img src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/f5c62903-082f-434b-aaae-c7f14473b6c8/57f3336c-a22d-477f-bc3c-a12116682713/hp_coconut-water-beveragesStorefront_m_250522_03.jpg" />
-                                <img src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/f5c62903-082f-434b-aaae-c7f14473b6c8/57f3336c-a22d-477f-bc3c-a12116682713/hp_energy-drinks-beveragesStorefront_m_250522_04.jpg" />
-                                <img src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/f5c62903-082f-434b-aaae-c7f14473b6c8/57f3336c-a22d-477f-bc3c-a12116682713/hp_syrups-beveragesStorefront_m_250522_05.jpg" />
-
-                            </div>
+                        <div id="l4">
+                            <p id="l2">Beverages</p>
                         </div>
+                        <Link to="/Beverages">
+                            <div id="img9">
+                                <div><img src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/f5c62903-082f-434b-aaae-c7f14473b6c8/57f3336c-a22d-477f-bc3c-a12116682713/hp_soft-deinks-beveragesStorefront_m_250522_560x378_01.jpg" /></div>
+                                <div id="lp8">
+                                    <img src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/f5c62903-082f-434b-aaae-c7f14473b6c8/57f3336c-a22d-477f-bc3c-a12116682713/hp_juices-beveragesStorefront_m_250522_02.jpg" />
+                                    <img src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/f5c62903-082f-434b-aaae-c7f14473b6c8/57f3336c-a22d-477f-bc3c-a12116682713/hp_coconut-water-beveragesStorefront_m_250522_03.jpg" />
+                                    <img src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/f5c62903-082f-434b-aaae-c7f14473b6c8/57f3336c-a22d-477f-bc3c-a12116682713/hp_energy-drinks-beveragesStorefront_m_250522_04.jpg" />
+                                    <img src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/f5c62903-082f-434b-aaae-c7f14473b6c8/57f3336c-a22d-477f-bc3c-a12116682713/hp_syrups-beveragesStorefront_m_250522_05.jpg" />
+
+                                </div>
+                            </div>
                         </Link>
                     </div>
                     <div>
