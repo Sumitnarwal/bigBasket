@@ -11,7 +11,11 @@ export const LandingPage = () => {
     return (
         <div>
             <div id="main">
-               
+           {    
+            // <div id="navbar" >
+            //     <Navbar/>
+            //     </div>
+                }
                 <div id="sliding_Window">
                     <CoverPicTop />
                 </div>
@@ -180,7 +184,7 @@ export const LandingPage = () => {
                             <p id="l2">Brand Store</p>
                         </div>
                         <div id="l11">
-                            <img src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/af5c62903-082f-434b-aaae-c7f14473b6c8/72a08674-af35-4c02-a9ab-237934c8d315/hp_amul-brandStorefront_m_480_250522_01.jpg" />
+                            <img src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/f5c62903-082f-434b-aaae-c7f14473b6c8/72a08674-af35-4c02-a9ab-237934c8d315/hp_amul-brandStorefront_m_480_250522_01.jpg" />
                             <img src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/f5c62903-082f-434b-aaae-c7f14473b6c8/72a08674-af35-4c02-a9ab-237934c8d315/hp_dettol-brandStorefront_m_480_250522_02.jpg" />
                             <img src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/f5c62903-082f-434b-aaae-c7f14473b6c8/72a08674-af35-4c02-a9ab-237934c8d315/hp_coco-cola-brandStorefront_m_480_250522_03.jpg" />
                             <img src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/f5c62903-082f-434b-aaae-c7f14473b6c8/72a08674-af35-4c02-a9ab-237934c8d315/hp_loreal-brandStorefront_m_480_250522_04.jpg" />

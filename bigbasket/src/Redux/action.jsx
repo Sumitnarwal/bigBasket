@@ -23,14 +23,18 @@ const fetDataFailure = (payload) => {
         payload
     }
 }
+
 export const fetchData = (payload) => {
     return (dispatch) => {
 
         dispatch(fetDataRequest());
 
-        Axios.get("/products", {
+        Axios.get("/softdrink", {
             params: { ...payload }
-        }).then((r) => dispatch(fetDataSuccess(r.data))).catch((error) =>
+        }).then((item) => dispatch(fetDataSuccess(item.data))
+      
+        ).catch((error) =>
             dispatch(fetDataFailure(error.data)));
     };
 };
+///////////////////////////////////////////////////////////////

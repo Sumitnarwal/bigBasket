@@ -4,10 +4,8 @@ import * as types  from "./actionType"
 const initState={
     products:[],
     error:false,
-    currentProduct:{},
     loading:false,
-    cart:[],
-    orders:[]
+ 
 }
 export const productReducer=(state=initState,{type,payload})=>{
     switch(type){

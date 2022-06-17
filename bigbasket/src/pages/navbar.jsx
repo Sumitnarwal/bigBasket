@@ -8,8 +8,9 @@ import { BsFillBasketFill } from "react-icons/bs"
 import { MdOutlineLocalOffer } from "react-icons/md"
 import { CgHomeScreen } from "react-icons/cg"
 import {
-    Menu, MenuButton, MenuList, MenuItem, MenuItemOption, MenuGroup, MenuOptionGroup, MenuDivider, Button, Box,
+    Menu, MenuButton, MenuList, MenuItem, MenuItemOption, MenuGroup, MenuOptionGroup, MenuDivider, Button, Box, Flex,
 } from '@chakra-ui/react'
+import { Link } from "react-router-dom"
 export const Navbar = () => {
     return (
         <div>
@@ -61,26 +62,46 @@ export const Navbar = () => {
                     </div>
                 </div>
                 <div id="MenuItem">
-                   
-                        <Menu bg={"black"} >
-                            <MenuButton as={Button} >
-                                SHOP BY CATEGORY <AiOutlineDown />
-                            </MenuButton>
-                            <MenuList>
-                                <MenuItem>FRUITS & Vegetables</MenuItem>
-                                <MenuItem>Foodgrains,Oil & Dairy</MenuItem>
-                                <MenuItem>Backery Cakes & Dairy</MenuItem>
-                                <MenuItem>Bevarages</MenuItem>
-                                <MenuItem>Snacks & Branded Foods</MenuItem>
-                                <MenuItem>Beauty & Hygiene</MenuItem>
-                                <MenuItem>Cleaning & Household</MenuItem>
-                                <MenuItem>Eggs,Meat & Fish</MenuItem>
-                                <MenuItem>Gourment & World Food</MenuItem>
-                                <MenuItem>Baby Care</MenuItem>
-                                <MenuItem>View All</MenuItem>
-                            </MenuList>
-                        </Menu>
-                   
+
+                    <Menu bg={"black"} >
+                        <MenuButton id="catagory" as={Button} >
+                            SHOP BY CATEGORY <AiOutlineDown />
+                        </MenuButton>
+                        <MenuList width={"1080px"} border="1px solid">
+                            <Flex>
+                                <Box>
+                                    <Link to={"/Beverages"}>
+                                    <MenuItem>Bevarages</MenuItem>
+                                    </Link>
+                                    <MenuItem>FRUITS & Vegetables</MenuItem>
+                                    <MenuItem>Foodgrains,Oil & Dairy</MenuItem>
+                                    <MenuItem>Backery Cakes & Dairy</MenuItem>
+                                    <MenuItem>Snacks & Branded Foods</MenuItem>
+                                    <MenuItem>Beauty & Hygiene</MenuItem>
+                                    <MenuItem>Cleaning & Household</MenuItem>
+                                    <MenuItem>Eggs,Meat & Fish</MenuItem>
+                                    <MenuItem>Gourment & World Food</MenuItem>
+                                    <MenuItem>Baby Care</MenuItem>
+                                    <MenuItem>View All</MenuItem>
+                                </Box>
+                                <Box>
+
+                                    <MenuItem>FRUITS & Vegetables</MenuItem>
+                                    <MenuItem>Foodgrains,Oil & Dairy</MenuItem>
+                                    <MenuItem>Backery Cakes & Dairy</MenuItem>
+                                    <MenuItem>Bevarages</MenuItem>
+                                    <MenuItem>Snacks & Branded Foods</MenuItem>
+                                    <MenuItem>Beauty & Hygiene</MenuItem>
+                                    <MenuItem>Cleaning & Household</MenuItem>
+                                    <MenuItem>Eggs,Meat & Fish</MenuItem>
+                                    <MenuItem>Gourment & World Food</MenuItem>
+                                    <MenuItem>Baby Care</MenuItem>
+                                    <MenuItem>View All</MenuItem>
+                                </Box>
+                            </Flex>
+                        </MenuList>
+                    </Menu>
+
                     <div id="offerUdiv">
                         <div id="offer"><MdOutlineLocalOffer /></div>
                         <div id="offerp">OFFERS</div>

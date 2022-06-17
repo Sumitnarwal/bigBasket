@@ -12,7 +12,4 @@ export const AllRoutes = () => {
             </Routes>
         </div>
     )
-
-
-
 }

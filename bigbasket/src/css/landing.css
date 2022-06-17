@@ -6,6 +6,7 @@
   /* border: 1px solid black; */
   margin: auto;
   text-align: center;
+  display: flex;
 }
 
 #below_slid_start > div {
@@ -208,4 +209,7 @@ Menu{
 }
 #home{
     color: #84c225;
+}
+#catagory{
+    display: flex;
 }
