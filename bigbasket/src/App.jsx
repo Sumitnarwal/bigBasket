@@ -3,6 +3,7 @@ import { useState } from 'react'
 import './App.css'
 
 import { AllRoutes } from './components/AllRoutes'
+import Footer from './components/footer'
 import { Navbar } from './pages/navbar'
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
     <div className="App">
      <Navbar/>
     <AllRoutes/>
+    <Footer/>
     </div>
   )
 }

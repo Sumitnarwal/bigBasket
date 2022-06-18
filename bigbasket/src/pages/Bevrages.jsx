@@ -9,36 +9,56 @@ import { BsFillBasketFill } from 'react-icons/bs';
 import { GrDeliver } from 'react-icons/gr';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import "../css/baveriges.css"
-import { fetchData } from '../Redux/action';
-import { addProductCart } from '../Redux/cart/action';
+import { fetchData, getSingleProduct } from '../Redux/action';
+import { addItemsToCart } from '../Redux/cart/action';
+//import { addProductCart } from '../Redux/cart/action';
 import { FilterComponents } from './filterComponent';
 export const Beverage = () => {
     const products = useSelector((store) => store.ecommerceData.products)
-    const currentProd = useSelector((store) => store.cartData.cart)
+    const currentProd = useSelector((store) => store.cartData.cartItems)
     const [id, setId] = useState("")
-    const [pro, setPro] = useState({})
-    // console.log(products)
+    const [pro, setPro] = useState([])
+    //    console.log("dfg",currentProd)
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchData())
+
     }, [])
-    const fetchSingle = () => {
-        axios({
-            url: `http://localhost:7005/softdrink/${id}`,
-            method: "post"
-        }).then((res) => {
-            setPro(res.data)
+
+    const getSingleBeforePost = (id) => {
+        axios.get(`http://localhost:7005/softdrink/${id}`).then(({ data }) => {
+            setPro(data)
+            console.log("item", data)
+            dispatch(addItemsToCart(data))
         })
     }
+    //  console.log(pro)
+    // const postSingle = (pro) => {
+    //     axios({
+    //         url:"http://localhost:7005/addtocart",
+    //         method:"POST",
+    //         body:{
+    //             pro
+    //         }
+    //     }).then((res)=>{
+    //              dispatch 
+    //     })
+    // }
 
-    const handleAddToCart = (id) => {
-        setId(id)
-        fetchSingle()
-        console.log("pro", id)
-        dispatch(addProductCart(pro))
+    const handleAddToCart = (item) => {
+        //  console.log("pro", item)
+        setId(item._id)
+        getSingleBeforePost(item._id)
+        //  dispatch(addProductCart(item))
+        //  dispatch(addProductCart(pro))
+
     }
 
+    const handleDetail = (id) => {
+        dispatch(getSingleProduct(id))
+    }
     return (
         <div>
             <div id='Products'>
@@ -86,7 +106,9 @@ export const Beverage = () => {
                     </div><hr />
                     <div id='map_data'>  {products.map((item) => (
                         <div key={item._id}>
-                            <img src={item.imgUrl} />
+                            <Link to={`./${item._id}`} >
+                                <img src={item.imgUrl} onClick={() => handleDetail(item._id)} />
+                            </Link>
                             <div id='prod_detail'>
                                 <p id='p11'>{item.company}</p>
                                 <p id='p112'>{item.title}</p>
@@ -105,7 +127,7 @@ export const Beverage = () => {
                                 <p>Rs {item.price} </p>
                             </div>
                             <div id='btntop'>
-                                <div><button onClick={() => handleAddToCart(item.id)} id='btn'>ADD</button></div>
+                                <div><button onClick={() => handleAddToCart(item)} id='btn'>ADD</button></div>
                                 <div> <BsFillBasketFill /></div>
 
                             </div>

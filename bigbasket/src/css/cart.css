@@ -1,0 +1,85 @@
+
+#cartPage{
+    width: 90%;
+   margin-left: 10%;
+    border: 1px solid black;
+    padding: 20px;
+   
+}
+#numberCart{
+    font-size: 30px;
+    text-align: left;
+    color: rgb(104, 101, 101);
+}
+#btncart button{
+    padding: 0px 10px;
+    border-radius: 10px;
+    border: 1px solid orange;
+    font-size: 14px;
+}
+#btncart{
+    margin-top: 10px;
+   margin-left: 0%;
+   width: 200px;
+}
+#btncross{
+    margin-left: 20px;
+    border: none;
+    font-size: 25px;
+}
+#subtototal{
+    width: 50%;
+    margin-top: 20px;
+    height: 300px;
+    /* border: 1px solid black; */
+    margin: right;
+    margin-left: 5%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#d12{
+    margin-top: 20px;
+    justify-content: space-around;
+    display: flex;
+      margin-left: -20px;
+}
+#f23{
+    font-size: 16px;
+    margin-top: 10px;
+}
+#div23{
+    width: 40%;
+    height: 300px;
+}
+.delivery{
+    
+    border-bottom: 1px solid rgb(191, 173, 173);
+}
+#sbto1{
+    display: flex;
+}
+#cheeeckout{
+    display: flex;
+    line-height: 1;
+    margin-top: 20px;
+}
+#cheeeckout button{
+    margin-left: 40%;
+   width: 45%;
+   font-size: 25px;
+   background-color: #f7d779;
+   border-radius: 10px;
+   border: none;
+   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#sym{
+    background-color: #f7d779;
+    margin-top: 15px;
+    margin-left: -30px;
+    font-size: 25px;
+    
+}
+#total{
+    font-size: 30px;
+
+}
+

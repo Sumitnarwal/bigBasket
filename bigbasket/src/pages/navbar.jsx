@@ -11,13 +11,17 @@ import {
     Menu, MenuButton, MenuList, MenuItem, MenuItemOption, MenuGroup, MenuOptionGroup, MenuDivider, Button, Box, Flex,
 } from '@chakra-ui/react'
 import { Link } from "react-router-dom"
+import { useSelector } from "react-redux"
 export const Navbar = () => {
+    const currentProd = useSelector((store) => store.cartData.cartItems)
     return (
         <div>
             <div id="navbar" >
                 <div id="navbar_top">
                     <div id="logo">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3xLI-jeYNyexq-hI1HvabWAM0rvpS2ubJbQ&usqp=CAU" alt="logo" />
+                        <Link to={"/"}>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3xLI-jeYNyexq-hI1HvabWAM0rvpS2ubJbQ&usqp=CAU" alt="logo" />
+                        </Link>
                     </div>
                     <div id="combine_serach_no">
                         <div id="basket_no">
@@ -49,31 +53,34 @@ export const Navbar = () => {
                                 </div>
                             </div>
                         </div>
-                        <div id="basket_search">
-                            <div id="input_search">
-                                <input placeholder="Search for Products..." />
-                                <div ><HiOutlineSearch /></div>
+                        <Link to={"/cart"}>
+                            <div id="basket_search">
+                                <div id="input_search">
+                                    <input placeholder="Search for Products..." />
+                                    <div id="mpk2" ><HiOutlineSearch /></div>
+                                </div>
+                                <div id="cart">
+                                    <div id="cart_logo"><BsFillBasketFill /></div>
+                                    <div id="cart_count">My Basket
+                                        <p>{currentProd.length} items</p></div>
+                                </div>
                             </div>
-                            <div id="cart">
-                                <div id="cart_logo"><BsFillBasketFill /></div>
-                                <div id="cart_count">My Basket  1 items</div>
-                            </div>
-                        </div>
+                        </Link>
                     </div>
                 </div>
                 <div id="MenuItem">
 
                     <Menu bg={"black"} >
-                        <MenuButton id="catagory" as={Button} >
+                        <MenuButton id="catagory" bg={"green"} as={Button} >
                             SHOP BY CATEGORY <AiOutlineDown />
                         </MenuButton>
-                        <MenuList width={"1080px"} border="1px solid">
+                        <MenuList width={"580px"} border="1px solid">
                             <Flex>
-                                <Box>
+                                <Box border={"1px solid rgb(191, 173, 173) "}>
                                     <Link to={"/Beverages"}>
-                                    <MenuItem>Bevarages</MenuItem>
+                                        <MenuItem>Bevarages</MenuItem>
                                     </Link>
-                                    <MenuItem>FRUITS & Vegetables</MenuItem>
+                                    <MenuItem border={"1px solid rgb(191, 173, 173) "}>FRUITS & Vegetables</MenuItem>
                                     <MenuItem>Foodgrains,Oil & Dairy</MenuItem>
                                     <MenuItem>Backery Cakes & Dairy</MenuItem>
                                     <MenuItem>Snacks & Branded Foods</MenuItem>
@@ -87,15 +94,15 @@ export const Navbar = () => {
                                 <Box>
 
                                     <MenuItem>FRUITS & Vegetables</MenuItem>
-                                    <MenuItem>Foodgrains,Oil & Dairy</MenuItem>
-                                    <MenuItem>Backery Cakes & Dairy</MenuItem>
-                                    <MenuItem>Bevarages</MenuItem>
-                                    <MenuItem>Snacks & Branded Foods</MenuItem>
                                     <MenuItem>Beauty & Hygiene</MenuItem>
-                                    <MenuItem>Cleaning & Household</MenuItem>
-                                    <MenuItem>Eggs,Meat & Fish</MenuItem>
-                                    <MenuItem>Gourment & World Food</MenuItem>
                                     <MenuItem>Baby Care</MenuItem>
+                                    <MenuItem>Cleaning & Household</MenuItem>
+                                    <MenuItem>Bevarages</MenuItem>
+                                    <MenuItem>Backery Cakes & Dairy</MenuItem>
+                                    <MenuItem>Gourment & World Food</MenuItem>
+                                    <MenuItem>Foodgrains,Oil & Dairy</MenuItem>
+                                    <MenuItem>Snacks & Branded Foods</MenuItem>
+                                    <MenuItem>Eggs,Meat & Fish</MenuItem>
                                     <MenuItem>View All</MenuItem>
                                 </Box>
                             </Flex>

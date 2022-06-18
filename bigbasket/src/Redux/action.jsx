@@ -38,3 +38,32 @@ export const fetchData = (payload) => {
     };
 };
 ///////////////////////////////////////////////////////////////
+//////// single product id
+
+const SingleProdIdrequest = (payload) => {
+    return {
+        type: types.SINGLE_PRO_ID_REQUEST,
+        payload,
+    }
+}
+
+const SingleProdIdrequestSuccess = (payload) => {
+    return {
+        type: types.SINGLE_PRO_ID_SUCCESS,
+        payload,
+    }
+}
+
+const SingleProdIdrequestFailure = (payload) => {
+    return {
+        type: types.SINGLE_PRO_ID_FAILURE,
+        payload
+    }
+}
+export const getSingleProduct = (id) => (dispatch) => {
+  //  console.log("pro", id)
+    dispatch(SingleProdIdrequest());
+
+    Axios.get(`/softdrink/${id}`).then((r) => dispatch(SingleProdIdrequestSuccess(r.data))).catch((error) =>
+        dispatch(SingleProdIdrequestFailure(error.data)));
+};

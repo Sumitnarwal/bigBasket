@@ -1,4 +1,6 @@
 
+import axios from "axios"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import "../css/landing.css"
 import { CoverPiclanding4 } from "./cover4"
@@ -6,8 +8,11 @@ import { CoverPiclanding3 } from "./coverlanding3"
 import { CoverPicTop } from "./coverPageTop1"
 import { CoverPic } from "./CoverPic"
 import { Navbar } from "./navbar"
+import { VegSeller } from "./slid.vegLand"
+import { BestSeller } from "./sliding"
 
 export const LandingPage = () => {
+   
     return (
         <div>
             <div id="main">
@@ -34,7 +39,9 @@ export const LandingPage = () => {
                             <button id="lb1">View All</button>
                         </div>
                         <div id="l5">
-                            vegitables
+                        {  
+                     <VegSeller/>
+                        }
                         </div>
                     </div>
                     <div id="slide_sec">
@@ -55,7 +62,9 @@ export const LandingPage = () => {
                             <button id="lb1">Show More</button>
                         </div>
                         <div id="l5">
-                            Best Sellers
+                           {
+                           <BestSeller/>
+                            }
                         </div>
                     </div>
                     <div>
