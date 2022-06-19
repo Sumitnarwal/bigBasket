@@ -10,9 +10,11 @@ import { CgHomeScreen } from "react-icons/cg"
 import {
     Menu, MenuButton, MenuList, MenuItem, MenuItemOption, MenuGroup, MenuOptionGroup, MenuDivider, Button, Box, Flex,
 } from '@chakra-ui/react'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
+import { Login } from "../components/Login"
 export const Navbar = () => {
+    const navigate=useNavigate()
     const currentProd = useSelector((store) => store.cartData.cartItems)
     return (
         <div>
@@ -45,9 +47,14 @@ export const Navbar = () => {
                             <div id="k2" >
                                 <div><CgProfile />
                                 </div>
-                                <div>
-                                    BigBasketeeer
-                                </div>
+                               {
+                                    // <div onClick={()=>navigate("/login")}>
+                                    //     Login/signUp
+                                    // </div>
+                            }
+                             <div>
+                                 <Login/>
+                             </div>
                                 <div>
                                     <AiOutlineDown />
                                 </div>
