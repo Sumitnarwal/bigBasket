@@ -60,19 +60,19 @@ export const Navbar = () => {
                                 </div>
                             </div>
                         </div>
+                        <div id="basket_search">
+                        <div id="input_search">
+                        <input placeholder="Search for Products..." />
+                        <div id="mpk2" ><HiOutlineSearch /></div>
+                        </div>
+                        <div id="cart">
+                        <div id="cart_logo"><BsFillBasketFill /></div>
                         <Link to={"/cart"}>
-                            <div id="basket_search">
-                                <div id="input_search">
-                                    <input placeholder="Search for Products..." />
-                                    <div id="mpk2" ><HiOutlineSearch /></div>
-                                </div>
-                                <div id="cart">
-                                    <div id="cart_logo"><BsFillBasketFill /></div>
                                     <div id="cart_count">My Basket
                                         <p>{currentProd.length} items</p></div>
-                                </div>
+                                        </Link>
+                                        </div>
                             </div>
-                        </Link>
                     </div>
                 </div>
                 <div id="MenuItem">

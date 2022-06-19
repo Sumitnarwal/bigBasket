@@ -29,7 +29,7 @@ const handleAddress=()=>{
                 <TableContainer>
                     <Table variant='simple'>
                         <Thead>
-                            <Tr bg={"#555555"} textColor={"white"}>
+                            <Tr  color={"white"}>
                                 <Th>ITEM DESCRIPTION</Th>
                                 <Th>UNIT PRICE</Th>
                                 <Th>QUANTITY</Th>
