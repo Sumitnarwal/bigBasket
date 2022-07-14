@@ -12,7 +12,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import "../css/baveriges.css"
 import { fetchData, getSingleProduct } from '../Redux/action';
-import { addItemsToCart } from '../Redux/cart/action';
+import { addItemsToCart, addProductCart } from '../Redux/cart/action';
 //import { addProductCart } from '../Redux/cart/action';
 import { FilterComponents } from './filterComponent';
 export const Beverage = () => {
@@ -27,31 +27,21 @@ export const Beverage = () => {
 
     }, [])
 
-    const getSingleBeforePost = (id) => {
-        axios.get(`http://localhost:7005/softdrink/${id}`).then(({ data }) => {
-            setPro(data)
-            console.log("item", data)
-            dispatch(addItemsToCart(data))
-        })
-    }
-    //  console.log(pro)
-    // const postSingle = (pro) => {
-    //     axios({
-    //         url:"http://localhost:7005/addtocart",
-    //         method:"POST",
-    //         body:{
-    //             pro
-    //         }
-    //     }).then((res)=>{
-    //              dispatch 
+    // const getSingleBeforePost = (id) => {
+    //     axios.get(`https://bgbskt.herokuapp.com/softdrink/${id}`).then(({ data }) => {
+    //         setPro(data)
+    //         console.log("item", data)
+    //         dispatch(addItemsToCart(data))
     //     })
     // }
+    
+    
 
     const handleAddToCart = (item) => {
         //  console.log("pro", item)
         setId(item._id)
-        getSingleBeforePost(item._id)
-        //  dispatch(addProductCart(item))
+     //   getSingleBeforePost(item._id)
+          dispatch(addProductCart(item))
         //  dispatch(addProductCart(pro))
 
     }

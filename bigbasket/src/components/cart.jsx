@@ -1,35 +1,57 @@
 
 import "../css/cart.css"
-import {Table,Thead,Tbody,Tfoot,Tr,Th,Td,TableCaption,TableContainer,
+import {
+    Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption, TableContainer,
 } from '@chakra-ui/react'
 import { useSelector } from "react-redux"
-import { deleteItem } from "../Redux/cart/action"
+import { delelteProdCart, deleteItem } from "../Redux/cart/action"
 import { useDispatch } from "react-redux"
 import { AiOutlineArrowRight } from "react-icons/ai"
-import {  useNavigate } from "react-router"
+import { useNavigate } from "react-router"
+import axios from "axios"
+import { useEffect, useState } from "react"
 
 export const Cart = () => {
-  const navigate=useNavigate()
+    const navigate = useNavigate()
     const currentProd = useSelector((store) => store.cartData.cartItems)
     const dispatch = useDispatch()
+    const [cartp, setCartp] = useState([])
+    const [length, setlength] = useState(10) ////This need to correct make page render again after delete
     let sum = 0
-    for (let i = 0; i < currentProd.length; i++) {
-        sum += currentProd[i].price
+    for (let i = 0; i < cartp.length; i++) {
+        sum += cartp[i].price
     }
-const handleAddress=()=>{
-    navigate("/address")
-}
+    const handleAddress = () => {
+        navigate("/address",{return:true})
+    }
+    /////////////////////////////////////////
+    useEffect(() => {
+        getData()
+    }, [length])
+    const getData = () => {
+        axios({
+            url: "http://localhost:7005/addtocart",
+            method: "GET"
+        }).then((res) => {
+            setCartp(res.data)
+        })
+    }
+    const handleDelteteFcart = (id) => {
 
-    console.log("currentProd", sum)
+        dispatch(delelteProdCart(id))
+        setlength(length + 1)
+    }
+    ////////////////////////////////////////
+
     return (
         <div id="cartPage">
-            <div id="numberCart">Your Basket ({currentProd.length} items)</div><hr />
+            <div id="numberCart">Your Basket ({cartp.length} items)</div><hr />
             <div id="btncart"> <button>VIEW AVAILABLE PROMOS</button></div>
             <div>
                 <TableContainer>
                     <Table variant='simple'>
                         <Thead>
-                            <Tr  color={"white"}>
+                            <Tr color={"white"}>
                                 <Th>ITEM DESCRIPTION</Th>
                                 <Th>UNIT PRICE</Th>
                                 <Th>QUANTITY</Th>
@@ -38,12 +60,12 @@ const handleAddress=()=>{
                             </Tr>
                         </Thead>
                         <Tbody>
-                            {currentProd.map((item) => (
+                            {cartp.map((item) => (
                                 <Tr>
                                     <Td>{item.title}</Td>
                                     <Td>Rs. {(item.price).toFixed(2)}</Td>
                                     <Td>1</Td>
-                                    <Td isNumeric>Rs. {(item.price).toFixed(2)} <button onClick={() => { dispatch(deleteItem(item._id)) }} id="btncross">×</button></Td>
+                                    <Td isNumeric>Rs. {(item.price).toFixed(2)} <button onClick={() => { handleDelteteFcart(item._id) }} id="btncross">×</button></Td>
                                     <Td isNumeric>Rs. {(item.price * .10).toFixed(2)}</Td>
                                 </Tr>
                             ))

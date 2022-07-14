@@ -13,8 +13,22 @@ import {
 import { Link, useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { Login } from "../components/Login"
+import axios from "axios"
+import { useEffect, useState } from "react"
 export const Navbar = () => {
+    const [cartp, setCartp] = useState([])
     const navigate=useNavigate()
+    useEffect(() => {
+        getData()
+    })
+    const getData = () => {
+        axios({
+            url: "http://localhost:7005/addtocart",
+            method: "GET"
+        }).then((res) => {
+            setCartp(res.data)
+        })
+    }
     const currentProd = useSelector((store) => store.cartData.cartItems)
     return (
         <div>
@@ -69,7 +83,7 @@ export const Navbar = () => {
                         <div id="cart_logo"><BsFillBasketFill /></div>
                         <Link to={"/cart"}>
                                     <div id="cart_count">My Basket
-                                        <p>{currentProd.length} items</p></div>
+                                        <p>{cartp.length} items</p></div>
                                         </Link>
                                         </div>
                             </div>

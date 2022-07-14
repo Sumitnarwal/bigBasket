@@ -39,6 +39,7 @@ export const ADD_PRODUCT_CART_FAILURE = "ADD_PRODUCT_CART_FAILURE"
 
 
     export const ADD_TO_CART = " ADD_TO_CART"
+    export const ALL_CART_PRO = " ALL_CART_PRO"
     export const REMOVE_CART_ITEM = "REMOVE_CART_ITEM"
     export const DELETE_ITEM = "DELETE_ITEM"
 
@@ -53,7 +54,10 @@ export const ADD_PRODUCT_CART_FAILURE = "ADD_PRODUCT_CART_FAILURE"
      }
   }
   
+ 
+  
    export const deleteItem = (id)=>{
+    alert("delete id recive")
         return {
             type : DELETE_ITEM,
             payload : id
@@ -62,11 +66,37 @@ export const ADD_PRODUCT_CART_FAILURE = "ADD_PRODUCT_CART_FAILURE"
  
   
   // REMOVE FROM CART
-  export const removeItemsFromCart = (data) => {
-     return {
-         type : REMOVE_CART_ITEM,
-         payload:data
-     }
-  };
+//   export const removeItemsFromCart = (data) => {
+//      return {
+//          type : REMOVE_CART_ITEM,
+//          payload:data
+//      }
+//   };
+
+
+
+  export const delelteProdCart = (product) => (dispatch) => {
+      alert(product)
+
+    axios.delete(`http://localhost:7005/addtocart/${product}`)
+    .then((r) => dispatch(deleteItem(r.data))).then((r)=>{
+
+    })
+  }
+  export const addsingleProductCart = (id) => (dispatch) => {
+    alert(`item${id} `)
+
+  axios.get(`http://localhost:7005/softdrink/${id}`)
   
+  .then((r) =>{  console.log("gvg",r.data),
+  dispatch(addProductCart(r.data))})
+
+}
+
+  export const addProductCart = (product) => (dispatch) => {
+      alert("item dispatch")
+
+    axios.post("http://localhost:7005/addtocart", product)
+    .then((r) => dispatch(addItemsToCart(r.data)))
+  }
   

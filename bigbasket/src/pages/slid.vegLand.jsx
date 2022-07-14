@@ -14,7 +14,7 @@ export const VegSeller = () => {
     }, [])
     const getdrink = () => {
         axios({
-            url: "http://localhost:7005/veg",
+            url: "https://bgbskt.herokuapp.com/veg",
             method: "GET",
             params: {
                 _limit: 5

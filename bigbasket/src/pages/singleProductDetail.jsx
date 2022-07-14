@@ -2,13 +2,19 @@ import { AiOutlineStar } from "react-icons/ai"
 import { RiTruckLine } from "react-icons/ri"
 import { useSelector } from "react-redux"
 import { useParams } from "react-router"
-
+import { useDispatch } from 'react-redux';
 
 import "../css/singlePro.css"
+import {  addsingleProductCart } from "../Redux/cart/action";
 export const ProductDetail = () => {
     const id = useSelector((store) => store.ecommerceData.id)
-    const {pid}=useParams()
-  //  console.log("pid", id)
+    const { pid } = useParams()
+    const dispatch = useDispatch()
+    //  console.log("pid", id)
+    const handleAddToCart = () => {
+        console.log("pid", id._id)
+        dispatch(addsingleProductCart(id._id))
+    }
 
     return (
         <div id="prodDetail">
@@ -48,10 +54,10 @@ export const ProductDetail = () => {
                     <div >{id.rating} Ratings</div>
                 </div>
                 <div id="btn1">
-                    <input placeholder="1" /> <button>ADD TO BASKET</button> <button id="btt23">SAVE</button>
+                    <input placeholder="1" /> <button onClick={handleAddToCart}>ADD TO BASKET</button> <button id="btt23">SAVE</button>
                 </div>
                 <div id="cartDate1">
-                    <div id="cartDate" ><RiTruckLine/></div>
+                    <div id="cartDate" ><RiTruckLine /></div>
                     <div id="cart3">Standard: 25 Jun, 9:00AM - 1:30PM</div>
                 </div>
             </div>

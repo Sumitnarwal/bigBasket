@@ -14,7 +14,7 @@ export const BestSeller = () => {
     }, [])
     const getdrink = () => {
         axios({
-            url: "http://localhost:7005/softdrink",
+            url: "https://bgbskt.herokuapp.com/softdrink",
             method: "GET",
             params: {
                 _limit: 5

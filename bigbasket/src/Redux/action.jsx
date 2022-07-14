@@ -1,5 +1,6 @@
 
-import Axios from "axios"
+import axios from "axios"
+
 
 import * as types from "./actionType"
 
@@ -29,7 +30,7 @@ export const fetchData = (payload) => {
 
         dispatch(fetDataRequest());
 
-        Axios.get("/softdrink", {
+        axios.get("https://bgbskt.herokuapp.com/softdrink", {
             params: { ...payload }
         }).then((item) => dispatch(fetDataSuccess(item.data))
       
@@ -64,6 +65,6 @@ export const getSingleProduct = (id) => (dispatch) => {
   //  console.log("pro", id)
     dispatch(SingleProdIdrequest());
 
-    Axios.get(`/softdrink/${id}`).then((r) => dispatch(SingleProdIdrequestSuccess(r.data))).catch((error) =>
+    axios.get(`https://bgbskt.herokuapp.com/softdrink/${id}`).then((r) => dispatch(SingleProdIdrequestSuccess(r.data))).catch((error) =>
         dispatch(SingleProdIdrequestFailure(error.data)));
 };

@@ -8,7 +8,7 @@ import App from './App'
 import './index.css'
 import axios from 'axios'
 import { store } from './Redux/store'
-axios.defaults.baseURL = "http://localhost:7005"
+axios.defaults.baseURL = "https://bgbskt.herokuapp.com"
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
