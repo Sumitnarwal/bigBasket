@@ -1,4 +1,5 @@
 import  axios  from "axios";
+import { fetchData } from "../action";
 
 export const ADD_PRODUCT_CART_REQUEST = "ADD_PRODUCT_CART_REQUEST";
 export const ADD_PRODUCT_CART_SUCCESS = "ADD_PRODUCT_CART_SUCCESS";
@@ -57,7 +58,7 @@ export const ADD_PRODUCT_CART_FAILURE = "ADD_PRODUCT_CART_FAILURE"
  
   
    export const deleteItem = (id)=>{
-    alert("delete id recive")
+   // alert("delete id recive")
         return {
             type : DELETE_ITEM,
             payload : id
@@ -76,17 +77,15 @@ export const ADD_PRODUCT_CART_FAILURE = "ADD_PRODUCT_CART_FAILURE"
 
 
   export const delelteProdCart = (product) => (dispatch) => {
-      alert(product)
+     alert("product removed")
 
-    axios.delete(`http://localhost:7005/addtocart/${product}`)
-    .then((r) => dispatch(deleteItem(r.data))).then((r)=>{
-
-    })
+    axios.delete(`https://bgbskt.herokuapp.com/addtocart/${product}`)  //kk
+    .then((r) => dispatch(deleteItem(r.data))).then((r)=>{getData()})
   }
   export const addsingleProductCart = (id) => (dispatch) => {
-    alert(`item${id} `)
+   // alert(`item${id} `)
 
-  axios.get(`http://localhost:7005/softdrink/${id}`)
+  axios.get(`https://bgbskt.herokuapp.com/softdrink/${id}`)  //kkk
   
   .then((r) =>{  console.log("gvg",r.data),
   dispatch(addProductCart(r.data))})
@@ -94,9 +93,9 @@ export const ADD_PRODUCT_CART_FAILURE = "ADD_PRODUCT_CART_FAILURE"
 }
 
   export const addProductCart = (product) => (dispatch) => {
-      alert("item dispatch")
+      alert("Product Add to cart")
 
-    axios.post("http://localhost:7005/addtocart", product)
+    axios.post("https://bgbskt.herokuapp.com/addtocart", product)  //kk
     .then((r) => dispatch(addItemsToCart(r.data)))
   }
   

@@ -10,6 +10,7 @@ import { GrDeliver } from 'react-icons/gr';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Select } from '@chakra-ui/react'
 import "../css/baveriges.css"
 import { fetchData, getSingleProduct } from '../Redux/action';
 import { addItemsToCart, addProductCart } from '../Redux/cart/action';
@@ -24,9 +25,8 @@ export const Beverage = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchData())
-
     }, [])
-
+    
     // const getSingleBeforePost = (id) => {
     //     axios.get(`https://bgbskt.herokuapp.com/softdrink/${id}`).then(({ data }) => {
     //         setPro(data)
@@ -34,16 +34,13 @@ export const Beverage = () => {
     //         dispatch(addItemsToCart(data))
     //     })
     // }
-    
-    
 
     const handleAddToCart = (item) => {
         //  console.log("pro", item)
         setId(item._id)
-     //   getSingleBeforePost(item._id)
-          dispatch(addProductCart(item))
+        //   getSingleBeforePost(item._id)
+        dispatch(addProductCart(item))
         //  dispatch(addProductCart(pro))
-
     }
 
     const handleDetail = (id) => {
@@ -64,28 +61,17 @@ export const Beverage = () => {
                             </div>
                         </div>
                         <div><FilterComponents /></div>
-                    </div>
-
+                    </div> 
                 </div>
                 <div id='k23'>
                     <div id='Drink_popularity'>
                         <div id='div1'>Soft Drinks(52)</div>
                         <div>
-                            <Menu>
-                                <MenuButton border={"1px solid black"}
-                                    padding={"5px"} width={"200px"} id='blackArro'>
-                                    <Flex justifyContent={"space-between"} lineHeight={"10px"} >
-                                        <Box>Popularity</Box> <Box><AiOutlineDown /></Box>
-                                    </Flex>
-                                </MenuButton>
-
-                                <MenuList>
-                                    <MenuItem>Price High to low</MenuItem>
-                                    <MenuItem>price Low to High</MenuItem>
-                                    <MenuItem>Alphabetical</MenuItem>
-
-                                </MenuList>
-                            </Menu>
+                            <Select onSelect={()=>{handleSelect(value)}} placeholder='Popularity'>
+                                <option value='option1'>Price-high to Low</option>
+                                <option value='option2'>Price-low to high</option>
+                                <option value='option3'>Alphabetical</option>
+                            </Select>
                         </div>
                     </div>
                     <div id='cart'>

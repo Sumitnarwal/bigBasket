@@ -15,15 +15,18 @@ import { useSelector } from "react-redux"
 import { Login } from "../components/Login"
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { delelteProdCart } from "../Redux/cart/action"
 export const Navbar = () => {
     const [cartp, setCartp] = useState([])
-    const navigate=useNavigate()
+    // const currentProd = useSelector((store) => store.cartData.cartItems)
+    const navigate = useNavigate()
     useEffect(() => {
         getData()
-    })
+    }, [delelteProdCart])
+
     const getData = () => {
         axios({
-            url: "http://localhost:7005/addtocart",
+            url: "https://bgbskt.herokuapp.com/addtocart",
             method: "GET"
         }).then((res) => {
             setCartp(res.data)
@@ -61,32 +64,32 @@ export const Navbar = () => {
                             <div id="k2" >
                                 <div><CgProfile />
                                 </div>
-                               {
+                                {
                                     // <div onClick={()=>navigate("/login")}>
                                     //     Login/signUp
                                     // </div>
-                            }
-                             <div>
-                                 <Login/>
-                             </div>
+                                }
+                                <div>
+                                    <Login />
+                                </div>
                                 <div>
                                     <AiOutlineDown />
                                 </div>
                             </div>
                         </div>
                         <div id="basket_search">
-                        <div id="input_search">
-                        <input placeholder="Search for Products..." />
-                        <div id="mpk2" ><HiOutlineSearch /></div>
-                        </div>
-                        <div id="cart">
-                        <div id="cart_logo"><BsFillBasketFill /></div>
-                        <Link to={"/cart"}>
+                            <div id="input_search">
+                                <input placeholder="Search for Products..." />
+                                <div id="mpk2" ><HiOutlineSearch /></div>
+                            </div>
+                            <div id="cart">
+                                <div id="cart_logo"><BsFillBasketFill /></div>
+                                <Link to={"/cart"}>
                                     <div id="cart_count">My Basket
                                         <p>{cartp.length} items</p></div>
-                                        </Link>
-                                        </div>
+                                </Link>
                             </div>
+                        </div>
                     </div>
                 </div>
                 <div id="MenuItem">
@@ -95,36 +98,36 @@ export const Navbar = () => {
                         <MenuButton id="catagory" bg={"green"} as={Button} >
                             SHOP BY CATEGORY <AiOutlineDown />
                         </MenuButton>
-                        <MenuList width={"580px"} border="1px solid">
+                        <MenuList width={"105%"} border={"1px solid rgb(228, 217, 217)"}>
                             <Flex>
                                 <Box border={"1px solid rgb(191, 173, 173) "}>
                                     <Link to={"/Beverages"}>
-                                        <MenuItem>Bevarages</MenuItem>
+                                        <MenuItem border={"1px solid rgb(228, 217, 217)"} id="slideDown">Bevarages</MenuItem>
                                     </Link>
-                                    <MenuItem border={"1px solid rgb(191, 173, 173) "}>FRUITS & Vegetables</MenuItem>
-                                    <MenuItem>Foodgrains,Oil & Dairy</MenuItem>
-                                    <MenuItem>Backery Cakes & Dairy</MenuItem>
-                                    <MenuItem>Snacks & Branded Foods</MenuItem>
-                                    <MenuItem>Beauty & Hygiene</MenuItem>
-                                    <MenuItem>Cleaning & Household</MenuItem>
-                                    <MenuItem>Eggs,Meat & Fish</MenuItem>
-                                    <MenuItem>Gourment & World Food</MenuItem>
-                                    <MenuItem>Baby Care</MenuItem>
-                                    <MenuItem>View All</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"} >FRUITS & Vegetables</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"}>Foodgrains,Oil & Dairy</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"}>Backery Cakes & Dairy</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"}>Snacks & Branded Foods</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"}>Beauty & Hygiene</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"}>Cleaning & Household</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"}>Eggs,Meat & Fish</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"}>Gourment & World Food</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"}>Baby Care</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"}>View All</MenuItem>
                                 </Box>
                                 <Box>
 
-                                    <MenuItem>FRUITS & Vegetables</MenuItem>
-                                    <MenuItem>Beauty & Hygiene</MenuItem>
-                                    <MenuItem>Baby Care</MenuItem>
-                                    <MenuItem>Cleaning & Household</MenuItem>
-                                    <MenuItem>Bevarages</MenuItem>
-                                    <MenuItem>Backery Cakes & Dairy</MenuItem>
-                                    <MenuItem>Gourment & World Food</MenuItem>
-                                    <MenuItem>Foodgrains,Oil & Dairy</MenuItem>
-                                    <MenuItem>Snacks & Branded Foods</MenuItem>
-                                    <MenuItem>Eggs,Meat & Fish</MenuItem>
-                                    <MenuItem>View All</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"}>FRUITS & Vegetables</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"}>Beauty & Hygiene</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"}>Baby Care</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"}>Cleaning & Household</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"}>Bevarages</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"}>Backery Cakes & Dairy</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"}>Gourment & World Food</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"}>Foodgrains,Oil & Dairy</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"}>Snacks & Branded Foods</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"}>Eggs,Meat & Fish</MenuItem>
+                                    <MenuItem border={"1px solid rgb(228, 217, 217)"}>View All</MenuItem>
                                 </Box>
                             </Flex>
                         </MenuList>

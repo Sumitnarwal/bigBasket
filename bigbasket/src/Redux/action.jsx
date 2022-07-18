@@ -27,13 +27,10 @@ const fetDataFailure = (payload) => {
 
 export const fetchData = (payload) => {
     return (dispatch) => {
-
         dispatch(fetDataRequest());
-
         axios.get("https://bgbskt.herokuapp.com/softdrink", {
             params: { ...payload }
         }).then((item) => dispatch(fetDataSuccess(item.data))
-      
         ).catch((error) =>
             dispatch(fetDataFailure(error.data)));
     };

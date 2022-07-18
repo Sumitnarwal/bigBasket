@@ -4,7 +4,7 @@ import {
     Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption, TableContainer,
 } from '@chakra-ui/react'
 import { useSelector } from "react-redux"
-import { delelteProdCart, deleteItem } from "../Redux/cart/action"
+import { addItemsToCart, delelteProdCart, deleteItem } from "../Redux/cart/action"
 import { useDispatch } from "react-redux"
 import { AiOutlineArrowRight } from "react-icons/ai"
 import { useNavigate } from "react-router"
@@ -16,30 +16,30 @@ export const Cart = () => {
     const currentProd = useSelector((store) => store.cartData.cartItems)
     const dispatch = useDispatch()
     const [cartp, setCartp] = useState([])
-    const [length, setlength] = useState(10) ////This need to correct make page render again after delete
+    const [a, seta] = useState(0) ////This need to correct make page render again after delete
     let sum = 0
     for (let i = 0; i < cartp.length; i++) {
         sum += cartp[i].price
     }
     const handleAddress = () => {
-        navigate("/address",{return:true})
+        navigate("/address", { return: true })
     }
     /////////////////////////////////////////
     useEffect(() => {
         getData()
-    }, [length])
+    }, [a])
     const getData = () => {
         axios({
-            url: "http://localhost:7005/addtocart",
+            url: "https://bgbskt.herokuapp.com/addtocart",
             method: "GET"
         }).then((res) => {
             setCartp(res.data)
         })
     }
     const handleDelteteFcart = (id) => {
-
+        seta(a+1)
         dispatch(delelteProdCart(id))
-        setlength(length + 1)
+        getData()
     }
     ////////////////////////////////////////
 
