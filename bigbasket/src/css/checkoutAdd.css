@@ -1,0 +1,21 @@
+
+#add_list{
+    width: 100%;
+    margin-left: 20px;
+    height: 350px;
+    padding: 20px;
+    margin-top: 20px;
+    background-color: rgb(229, 247, 167);
+}
+#add_list1{
+  
+    width: 50%;
+    height: 90%;
+    padding: 10px;
+    text-align: left;
+}
+#add_list1 div{
+ margin-top: 10px;
+ font-size: 20px;
+ font-weight: 700;
+}

@@ -1,6 +1,6 @@
 
 import axios from "axios"
-
+export const ADD_ADDRESS="ADD_ADDRESS"
 
 import * as types from "./actionType"
 
@@ -10,7 +10,15 @@ const fetDataRequest = (payload) => {
         payload,
     }
 }
+/////////////////////////////////////////////
+export const addAddress = (data)=>{
+    return{
+        type : ADD_ADDRESS,
+        payload:data
+    }
+ }
 
+////////////////////////////////
 const fetDataSuccess = (payload) => {
     return {
         type: types.FETCH_DATA_SUCCESS,
@@ -26,11 +34,17 @@ const fetDataFailure = (payload) => {
 }
 
 export const fetchData = (payload) => {
+   
     return (dispatch) => {
         dispatch(fetDataRequest());
-        axios.get("https://bgbskt.herokuapp.com/softdrink", {
-            params: { ...payload }
-        }).then((item) => dispatch(fetDataSuccess(item.data))
+        axios("https://bgbskt.herokuapp.com/softdrink", {
+            method: "GET",
+            params: {
+                ...payload
+            }
+        }).then((item) =>
+            dispatch(fetDataSuccess(item.data))
+
         ).catch((error) =>
             dispatch(fetDataFailure(error.data)));
     };
@@ -59,7 +73,7 @@ const SingleProdIdrequestFailure = (payload) => {
     }
 }
 export const getSingleProduct = (id) => (dispatch) => {
-  //  console.log("pro", id)
+    //  console.log("pro", id)
     dispatch(SingleProdIdrequest());
 
     axios.get(`https://bgbskt.herokuapp.com/softdrink/${id}`).then((r) => dispatch(SingleProdIdrequestSuccess(r.data))).catch((error) =>

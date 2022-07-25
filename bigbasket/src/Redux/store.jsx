@@ -14,3 +14,6 @@ export const store = legacy_createStore(rootReducer,composeEnhancers(applyMiddle
 );
 
 console.log(store.getState())
+
+
+

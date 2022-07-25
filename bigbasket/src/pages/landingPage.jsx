@@ -3,6 +3,7 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import "../css/landing.css"
+
 import { CoverPiclanding4 } from "./cover4"
 import { CoverPiclanding3 } from "./coverlanding3"
 import { CoverPicTop } from "./coverPageTop1"

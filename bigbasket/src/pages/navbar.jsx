@@ -13,6 +13,7 @@ import {
 import { Link, useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { Login } from "../components/Login"
+//import { Login } from "../components/Login/Login"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { delelteProdCart } from "../Redux/cart/action"
@@ -61,17 +62,16 @@ export const Navbar = () => {
                                     <AiOutlineDown />
                                 </div>
                             </div>
-                            <div id="k2" >
+                            <div id="k23t" >
                                 <div><CgProfile />
                                 </div>
-                                {
-                                    // <div onClick={()=>navigate("/login")}>
-                                    //     Login/signUp
-                                    // </div>
-                                }
-                                <div>
-                                    <Login />
+                                <div id="k23btn">
+                                    <button id="btnnav" onClick={() => navigate("/Register")}>siginIn/login</button>
                                 </div>
+                                {
+                                    //   <Login />
+                                }
+
                                 <div>
                                     <AiOutlineDown />
                                 </div>

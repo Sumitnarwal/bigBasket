@@ -224,3 +224,25 @@ Menu{
     display: flex;
 }
 
+#LoginTop{
+text-align: center;
+}
+#signInDiv{
+margin: auto;
+}
+#btnnav{
+  border: none;
+}
+#k23t{
+  display: flex;
+    line-height: 1;
+    /* border: 1px solid black; */
+    font-size: 25px;
+    margin-top: 5px;
+  }
+#k23btn{
+  margin-top: -15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  
+}

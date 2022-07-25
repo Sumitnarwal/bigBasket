@@ -8,8 +8,8 @@ import { ADD_TO_CART, REMOVE_CART_ITEM, DELETE_ITEM } from "./action"
 const init = {
   cartItems: [],
   totalQuantity: 0
-
 }
+
 console.log("dddd", init.cartItems)
 
 // export const cartReducer = (state = initState, { type, payload }) => {
@@ -26,32 +26,7 @@ export const cartReducer = (store = init, { type, payload }) => {
   switch (type) {
     case ADD_TO_CART:
       const item = payload;
-      const isItemExist = store.cartItems.find((i) => i._id === item._id);
-
-      // if (isItemExist) {
-      //   isItemExist.quantity++
-      //   isItemExist.totalprice += payload.price
-
-      // }
-      //  else {
-      //   return {
-      //     ...store,
-      //     cartItems: [...store.cartItems, { ...payload, quantity: 1, totalprice: payload.price }],
-      //   };
-      // }
-
-    // case REMOVE_CART_ITEM:
-
-    //   const items = payload;
-
-    //   const isItemExists = store.cartItems.find(
-    //     (i) => i._id === items._id
-    //   );
-    //   //console.log(isItemExists)
-    //   isItemExists.quantity--
-    //   isItemExists.totalprice -= payload.price
-
-
+    //  const isItemExist = store.cartItems.find((i) => i._id === item._id);
     case DELETE_ITEM: 
    // alert(payload._id)
     return {

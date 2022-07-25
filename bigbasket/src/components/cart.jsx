@@ -25,9 +25,16 @@ export const Cart = () => {
         navigate("/address", { return: true })
     }
     /////////////////////////////////////////
+    const handleDelteteFcart = (id) => {
+        seta(a + 1)
+        dispatch(delelteProdCart(id))
+        getData()
+
+
+    }
     useEffect(() => {
         getData()
-    }, [a])
+    }, [a,handleDelteteFcart])
     const getData = () => {
         axios({
             url: "https://bgbskt.herokuapp.com/addtocart",
@@ -36,11 +43,7 @@ export const Cart = () => {
             setCartp(res.data)
         })
     }
-    const handleDelteteFcart = (id) => {
-        seta(a+1)
-        dispatch(delelteProdCart(id))
-        getData()
-    }
+   
     ////////////////////////////////////////
 
     return (
@@ -60,8 +63,8 @@ export const Cart = () => {
                             </Tr>
                         </Thead>
                         <Tbody>
-                            {cartp.map((item) => (
-                                <Tr>
+                            {cartp.map((item,i) => (
+                                <Tr key={i}>
                                     <Td>{item.title}</Td>
                                     <Td>Rs. {(item.price).toFixed(2)}</Td>
                                     <Td>1</Td>

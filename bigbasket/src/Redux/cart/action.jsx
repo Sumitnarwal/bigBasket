@@ -43,9 +43,8 @@ export const ADD_PRODUCT_CART_FAILURE = "ADD_PRODUCT_CART_FAILURE"
     export const ALL_CART_PRO = " ALL_CART_PRO"
     export const REMOVE_CART_ITEM = "REMOVE_CART_ITEM"
     export const DELETE_ITEM = "DELETE_ITEM"
-
+    
  
-  
   
   // Add to Cart
   export const addItemsToCart = (data)=>{
@@ -55,7 +54,6 @@ export const ADD_PRODUCT_CART_FAILURE = "ADD_PRODUCT_CART_FAILURE"
      }
   }
   
- 
   
    export const deleteItem = (id)=>{
    // alert("delete id recive")
@@ -75,27 +73,24 @@ export const ADD_PRODUCT_CART_FAILURE = "ADD_PRODUCT_CART_FAILURE"
 //   };
 
 
-
   export const delelteProdCart = (product) => (dispatch) => {
      alert("product removed")
-
     axios.delete(`https://bgbskt.herokuapp.com/addtocart/${product}`)  //kk
-    .then((r) => dispatch(deleteItem(r.data))).then((r)=>{getData()})
+    .then((r) => dispatch(deleteItem(r.data)))
   }
+
   export const addsingleProductCart = (id) => (dispatch) => {
    // alert(`item${id} `)
 
   axios.get(`https://bgbskt.herokuapp.com/softdrink/${id}`)  //kkk
-  
   .then((r) =>{  console.log("gvg",r.data),
   dispatch(addProductCart(r.data))})
-
 }
 
   export const addProductCart = (product) => (dispatch) => {
       alert("Product Add to cart")
-
     axios.post("https://bgbskt.herokuapp.com/addtocart", product)  //kk
     .then((r) => dispatch(addItemsToCart(r.data)))
   }
   
+
