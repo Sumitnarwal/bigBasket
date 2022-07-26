@@ -15,7 +15,9 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { Select } from '@chakra-ui/react'
 import "../css/baveriges.css"
 import { fetchData, getSingleProduct } from '../Redux/action';
-import { addItemsToCart, addProductCart } from '../Redux/cart/action';
+//import { addItemsToCart, addProductCart } from '../Redux/
+//cart/action';
+import { addProductCart } from '../Redux/cart2/action';
 //import { addProductCart } from '../Redux/cart/action';
 //import { FilterComponents } from './filterComponent';
 
@@ -23,11 +25,12 @@ import { addItemsToCart, addProductCart } from '../Redux/cart/action';
 export const Beverage = () => {
 
     let products = useSelector((store) => store.ecommerceData.products)
-    const currentProd = useSelector((store) => store.cartData.cartItems)
+    const currentProd = useSelector((store) => store.cartData.totalQuantity)
+   // console.log("currentProd",currentProd)
     const [id, setId] = useState("")
     const [pro, setPro] = useState([])
     const [orderShort, setOrder] = useState("")
-    //    console.log("dfg",currentProd)
+
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchData())
@@ -98,12 +101,9 @@ export const Beverage = () => {
     /////////////////////////////////////////
 
 
-    const handleAddToCart = (item) => {
-        //  console.log("pro", item)
+    const handleAddToCart = (item) => { 
         setId(item._id)
-        //   getSingleBeforePost(item._id)
         dispatch(addProductCart(item))
-        //  dispatch(addProductCart(pro))
     }
 
     const handleDetail = (id) => {

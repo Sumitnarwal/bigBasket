@@ -11,29 +11,70 @@ import {
     Menu, MenuButton, MenuList, MenuItem, MenuItemOption, MenuGroup, MenuOptionGroup, MenuDivider, Button, Box, Flex,
 } from '@chakra-ui/react'
 import { Link, useNavigate } from "react-router-dom"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { Login } from "../components/Login"
 //import { Login } from "../components/Login/Login"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { delelteProdCart } from "../Redux/cart/action"
+import { fetchCart } from "../Redux/cart2/action"
 export const Navbar = () => {
     const [cartp, setCartp] = useState([])
-    // const currentProd = useSelector((store) => store.cartData.cartItems)
+    const dispatch = useDispatch()
+    const [input, setInput] = useState("")
+    const cartlength = useSelector((store) => store.cartData.cart)
+    const username = useSelector((store) => store.ecommerceData.username)
+console.log("username",username)
     const navigate = useNavigate()
-    useEffect(() => {
-        getData()
-    }, [delelteProdCart])
+    // useEffect(() => {
+    //     getData()
+    // }, [])
+    //////////////////////////
 
-    const getData = () => {
-        axios({
-            url: "https://bgbskt.herokuapp.com/addtocart",
-            method: "GET"
-        }).then((res) => {
-            setCartp(res.data)
-        })
+    const handleDebounce = (e) => {
+        setInput(e.target.value)
     }
-    const currentProd = useSelector((store) => store.cartData.cartItems)
+    //console.log(input)
+    let time
+    const debounce = (fun, delay) => {
+        if (time) {
+            clearTimeout(time)
+        }
+        time = setTimeout(() => {
+            fun()
+        }, delay)
+    }
+    async function debounceFun() {
+        const data = await Search()
+        // console.log(data)
+    }
+    async function Search() {
+        try {
+            const searchText = input
+
+            const data = await fetch(`https://api.unsplash.com/search/photos?per_page=28&query=${searchText}&client_id=8lBaqc-XJTCXhnwvlftCl7DNmzD3HU9CsGnMNyaHxMo`)
+            const res = await data.json();
+            return res.results
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    ////////////////////////
+    useEffect(() => {
+        if (cartlength?.length === 0) {
+            dispatch(fetchCart())
+        }
+    }, [dispatch, cartlength?.length])
+    // const getData = () => {
+    //     axios({
+    //         url: "https://bgbskt.herokuapp.com/addtocart",
+    //         method: "GET"
+    //     }).then((res) => {
+    //         setCartp(res.data)
+    //     })
+    // }
+
     return (
         <div>
             <div id="navbar" >
@@ -66,7 +107,7 @@ export const Navbar = () => {
                                 <div><CgProfile />
                                 </div>
                                 <div id="k23btn">
-                                    <button id="btnnav" onClick={() => navigate("/Register")}>siginIn/login</button>
+                                    <button id="btnnav" onClick={() => navigate("/Register")}>{username?username:"sigin/Login"}</button>
                                 </div>
                                 {
                                     //   <Login />
@@ -79,14 +120,15 @@ export const Navbar = () => {
                         </div>
                         <div id="basket_search">
                             <div id="input_search">
-                                <input placeholder="Search for Products..." />
+                                <input onInput={debounce(debounceFun, 3000)} onChange={handleDebounce} placeholder="Search for Products..." />
                                 <div id="mpk2" ><HiOutlineSearch /></div>
                             </div>
                             <div id="cart">
                                 <div id="cart_logo"><BsFillBasketFill /></div>
                                 <Link to={"/cart"}>
                                     <div id="cart_count">My Basket
-                                        <p>{cartp.length} items</p></div>
+                                        <p>{cartlength?.length ? cartlength.length : 0} items</p>
+                                    </div>
                                 </Link>
                             </div>
                         </div>

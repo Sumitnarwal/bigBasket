@@ -6,16 +6,20 @@ import { useDispatch } from 'react-redux';
 
 import "../css/singlePro.css"
 import {  addsingleProductCart } from "../Redux/cart/action";
+import { addProductCart } from "../Redux/cart2/action";
 export const ProductDetail = () => {
     const id = useSelector((store) => store.ecommerceData.id)
     const { pid } = useParams()
     const dispatch = useDispatch()
     //  console.log("pid", id)
-    const handleAddToCart = () => {
-        console.log("pid", id._id)
-        dispatch(addsingleProductCart(id._id))
-    }
+    // const handleAddToCart = () => {
+    //     console.log("pid", id._id)
+    //     dispatch(addsingleProductCart(id._id))
+    // }
 
+    const handleAddToCart=()=>{
+        dispatch(addProductCart(id))
+    }
     return (
         <div id="prodDetail">
             <div id="left">

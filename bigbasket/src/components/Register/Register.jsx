@@ -23,7 +23,7 @@ export const Register = () => {
     password: "",
     re_enter_pass: "",
   });
-
+console.log(user.name)
   const handleClick = () => setShow(!show);
   const handleChange = (e) => {
     e.preventDefault();
@@ -38,7 +38,7 @@ export const Register = () => {
     // console.log(name,email,password,re_enter_pass)
     if ((name, email, password, re_enter_pass && password === re_enter_pass)) {
       axios
-        .post("http://localhost:7005/register", user)
+        .post("https://bigbaskets.herokuapp.com/register", user)
         .then((res) => {
           if (res.data.message === "Successfully Register") {
             alert(res.data.message)
@@ -56,10 +56,10 @@ export const Register = () => {
   };
   return (
     <Box
-    margin="auto"
-    mb={"20px"}
-    mt={"20px"}
-    boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
+      margin="auto"
+      mb={"20px"}
+      mt={"20px"}
+      boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
       padding={"20px"}
       rounded="md"
       bg="white"
@@ -67,7 +67,7 @@ export const Register = () => {
       height={550}
       align="center"
     >
-    
+
       <h1 id="LoginTopLo">Register</h1>
       <FormControl isRequired>
         <FormLabel htmlFor="first-name">First name</FormLabel>

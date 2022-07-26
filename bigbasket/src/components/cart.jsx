@@ -4,45 +4,58 @@ import {
     Table, Thead, Tbody, Tfoot, Tr, Th, Td, TableCaption, TableContainer,
 } from '@chakra-ui/react'
 import { useSelector } from "react-redux"
-import { addItemsToCart, delelteProdCart, deleteItem } from "../Redux/cart/action"
+import { addItemsToCart, deleteItem } from "../Redux/cart/action"
 import { useDispatch } from "react-redux"
 import { AiOutlineArrowRight } from "react-icons/ai"
 import { useNavigate } from "react-router"
 import axios from "axios"
 import { useEffect, useState } from "react"
-
+import { fetchCart } from "../Redux/cart2/action"
+import {deleteProductCart} from "../Redux/cart2/action"
 export const Cart = () => {
     const navigate = useNavigate()
-    const currentProd = useSelector((store) => store.cartData.cartItems)
+  //  const currentProd = useSelector((store) => store.cartData.cartItems)
+  const cartp=useSelector((store)=>store.cartData.cart)
     const dispatch = useDispatch()
-    const [cartp, setCartp] = useState([])
+   // const [cartp, setCartp] = useState([])
     const [a, seta] = useState(0) ////This need to correct make page render again after delete
     let sum = 0
     for (let i = 0; i < cartp.length; i++) {
         sum += cartp[i].price
     }
     const handleAddress = () => {
-        navigate("/address", { return: true })
+        if(sum>0){
+
+            navigate("/address", { return: true })
+        }else{
+
+            alert("Please add some products")
+        }
     }
     /////////////////////////////////////////
     const handleDelteteFcart = (id) => {
         seta(a + 1)
-        dispatch(delelteProdCart(id))
-        getData()
+        dispatch(deleteProductCart(id))
+   
 
 
     }
-    useEffect(() => {
-        getData()
-    }, [a,handleDelteteFcart])
-    const getData = () => {
-        axios({
-            url: "https://bgbskt.herokuapp.com/addtocart",
-            method: "GET"
-        }).then((res) => {
-            setCartp(res.data)
-        })
-    }
+    // useEffect(() => {
+    //     getData()
+    // }, [a,handleDelteteFcart])
+
+    // const getData = () => {
+    //     axios({
+    //         url: "https://bgbskt.herokuapp.com/addtocart",
+    //         method: "GET"
+    //     }).then((res) => {
+    //         setCartp(res.data)
+    //     })
+    // }
+    useEffect(()=>{
+        dispatch(fetchCart())
+
+    },[])
    
     ////////////////////////////////////////
 

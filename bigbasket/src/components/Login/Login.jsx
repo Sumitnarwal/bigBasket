@@ -2,8 +2,8 @@
 import { Box } from "@chakra-ui/react";
 import { useState } from "react";
 import axios from "axios"
-import {useNavigate} from 'react-router-dom'
-import {useEffect} from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 import jwt_decode from 'jwt-decode'
 import {
   FormControl,
@@ -22,26 +22,29 @@ export const Login = (props) => {
     email: "",
     password: "",
   });
+  const [userName, setUserName] = useState('SignIn')
   const handleClick = () => setShow(!show);
-  function handleCallbackResponse(response){
+  function handleCallbackResponse(response) {
     //console.log('Encoded JWT Id token:'+responce.credential);
     var userID = jwt_decode(response.credential);
-    console.log('userID:',userID)
+    console.log('userID:', userID)
+    setUserName(userID.name)
+    console.log("userName")
     props.setgoogleAuthUser(userID)
     navigate('/')
-}
-useEffect(()=>{
+  }
+  useEffect(() => {
     google.accounts.id.initialize({
-        client_id:'1018777173719-po881ts69fnll531n7v5ksti1g22v10t.apps.googleusercontent.com',
-        callback:handleCallbackResponse
+      client_id: '1018777173719-po881ts69fnll531n7v5ksti1g22v10t.apps.googleusercontent.com',
+      callback: handleCallbackResponse
     })
 
     google.accounts.id.renderButton(
-        document.getElementById('signInDiv'),
-        {theme:'outline'}
+      document.getElementById('signInDiv'),
+      { theme: 'outline' }
     )
 
-},[])
+  }, [])
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -51,22 +54,22 @@ useEffect(()=>{
     });
   };
 
-  const login =()=>{
-    axios.post('http://localhost:5000/login',user).then(res=>{
-      console.log(res)
+
+  const login = () => {
+    axios.post('https://bigbaskets.herokuapp.com/login', user).then(res => {
+      console.log(res.data.user)
       alert(res.data.message)
       props.setLoginUser(res.data.user)
     })
-    
     navigate('/')
   }
   return (
     <Box
-  //   border={"1px solid black"}
-     margin="auto"
-     mb={"20px"}
-     mt={"20px"}
-   //   boxShadow="xs"
+      //   border={"1px solid black"}
+      margin="auto"
+      mb={"20px"}
+      mt={"20px"}
+      //   boxShadow="xs"
       p="6"
       boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
       rounded="md"
@@ -104,11 +107,11 @@ useEffect(()=>{
         </Button>
         <br />
         <p>Or </p>
-        <Button colorScheme="gray" width="100%" onClick={()=>navigate('/register')}>
+        <Button colorScheme="gray" width="100%" onClick={() => navigate('/register')}>
           Register
         </Button>
       </FormControl>
-      <br/>
+      <br />
       <div id="signInDiv"></div>
     </Box>
   );

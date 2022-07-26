@@ -2,19 +2,20 @@
 
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom"
 import "../css/baveriges.css"
-
+import {  getSingleProduct } from '../Redux/action';
 export const BestSeller = () => {
     const [drink, setDrink] = useState([])
-
+    const dispatch = useDispatch()
     useEffect(() => {
         //   getVeg(),
         getdrink()
     }, [])
     const getdrink = () => {
         axios({
-            url: "https://bgbskt.herokuapp.com/softdrink",
+            url: "https://bigbaskets.herokuapp.com/softdrink",
             method: "GET",
             params: {
                 _limit: 5
@@ -26,10 +27,13 @@ export const BestSeller = () => {
             console.log(e.message)
         })
     }
+    const handleDetail = (id) => {
+        dispatch(getSingleProduct(id))
+    }
     return (
         <div id='map_top'>  {drink?.map((item) => (
             <div id="fk2" key={item._id}>
-                <Link to={`./${item._id}`} >
+                <Link to={`./Beverages/${item._id}`} >
                     <img src={item.imgUrl} onClick={() => handleDetail(item._id)} />
                 </Link>
                 <div id='prod_detail44'>

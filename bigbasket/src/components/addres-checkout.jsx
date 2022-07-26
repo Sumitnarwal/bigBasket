@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { addAddress } from "../Redux/action";
 import { AddressShow } from "./checkoutAdd";
+import { addProductCart, fetchCart } from "../Redux/cart2/action";
 export const Checkout = () => {
   const [value, setvalue] = useState(false)
   const [currentProd, setCartp] = useState([])
@@ -46,19 +47,41 @@ export const Checkout = () => {
     })
   }
 
-  console.log(information)
+ // console.log(information)
   const getData = () => {
     axios({
-      url: "https://bgbskt.herokuapp.com/addtocart",
+      url: "https://bigbaskets.herokuapp.com/addtocart",
       method: "GET"
     }).then((res) => {
       setCartp(res.data)
     })
   }
+
+ const    getDataDelete=()=>{
+    // const navigate=useNavigate()
+    axios({
+      url: "https://bigbaskets.herokuapp.com/addtocart",
+      method: "DELETE"
+    }).then((res) => {
+      dispatch(fetchCart())
+     
+
+    }).then(()=>{
+    navigate("/")
+  //  console.log("hello")
+   } )
+  }
+
   let sum = 0
   for (let i = 0; i < currentProd.length; i++) {
     sum += currentProd[i].price
   }
+  const razerpay = () => {
+        
+   displayRazorpay(sum,getDataDelete)
+
+  }
+
   const navigate = useNavigate();
   return (
     <Box >
@@ -337,8 +360,8 @@ export const Checkout = () => {
 
           </Box>
           {
-            value ? <Button bg={"gold"} onClick={()=>displayRazorpay(sum)} marginTop="50px"
-            mb={"20px"} width={"250px"} height="60px" fontSize={"25px"} variant={"outline"}>
+            value ? <Button bg={"gold"} onClick={razerpay} marginTop="50px"
+              mb={"20px"} width={"250px"} height="60px" fontSize={"25px"} variant={"outline"}>
               Payment Page
             </Button> : null
           }

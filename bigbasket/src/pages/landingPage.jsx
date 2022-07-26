@@ -1,7 +1,7 @@
 
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import "../css/landing.css"
 
 import { CoverPiclanding4 } from "./cover4"
@@ -13,15 +13,10 @@ import { VegSeller } from "./slid.vegLand"
 import { BestSeller } from "./sliding"
 
 export const LandingPage = () => {
-   
+    const navigate=useNavigate()
     return (
         <div>
             <div id="main">
-           {    
-            // <div id="navbar" >
-            //     <Navbar/>
-            //     </div>
-                }
                 <div id="sliding_Window">
                     <CoverPicTop />
                 </div>
@@ -94,14 +89,13 @@ export const LandingPage = () => {
                         <div id="l4">
                             <p id="l2">Fruits and Vegetables</p>
                         </div>
-                        <div id="img9">
+                        <div onClick={()=>navigate("/Beverages")} id="img9">
                             <div><img src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/f5c62903-082f-434b-aaae-c7f14473b6c8/c0380be0-1398-4fa9-8772-2d5f5943b7fd/hp_orgain-fnv-fnvStorefront_m_250522_560x378_01.jpg" /></div>
                             <div id="lp8">
                                 <img src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/f5c62903-082f-434b-aaae-c7f14473b6c8/c0380be0-1398-4fa9-8772-2d5f5943b7fd/hp_fruits-fnvStorefront_m_250522_275x184_02.jpg" />
                                 <img src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/f5c62903-082f-434b-aaae-c7f14473b6c8/c0380be0-1398-4fa9-8772-2d5f5943b7fd/hp_veggs-fnvStorefront_m_250522_275x184_03.jpg" />
                                 <img src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/f5c62903-082f-434b-aaae-c7f14473b6c8/c0380be0-1398-4fa9-8772-2d5f5943b7fd/hp_cut-fnvStorefront_m_250522_275x184_04.jpg" />
                                 <img src="https://www.bigbasket.com/media/customPage/b01eee88-e6bc-410e-993c-dedd012cf04b/f5c62903-082f-434b-aaae-c7f14473b6c8/c0380be0-1398-4fa9-8772-2d5f5943b7fd/hp_exotic-fnvStorefront_m_250522_275x184_05.jpg" />
-
                             </div>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-import { ADD_ADDRESS } from "./action"
+import { ADD_ADDRESS, ADD_USER_NAME } from "./action"
 import * as types  from "./actionType"
 
 
@@ -7,7 +7,8 @@ const initState={
     error:false,
     loading:false,
     id:"",
-    address:{}
+    address:{},
+    username:""
  
 }
 
@@ -23,6 +24,7 @@ export const productReducer=(state=initState,{type,payload})=>{
         case types.SINGLE_PRO_ID_FAILURE:return{...state,error:false,loading:true}
         case ADD_ADDRESS:return{...state,address:payload}
         
+        case ADD_USER_NAME:return{...state,username:payload}
       
         default: return state
     }

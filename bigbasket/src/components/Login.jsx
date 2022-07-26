@@ -83,6 +83,7 @@ import {
     InputGroup,
 } from "@chakra-ui/react";
 import { useRef } from "react";
+import { addUserName } from "../Redux/action";
 // import { GoogleAuth } from "../GoogleAuth/googleAuth";
 export const Login = (props) => {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -101,6 +102,7 @@ export const Login = (props) => {
         ///////////////////
         alert(`${userID.name} ! You are successfully signed in`)
         setUserName(userID.name)
+       dispatch(addUserName(userName))
         dispatch(isAuth(true));
         //////////////////////////////
         props.setgoogleAuthUser(userID)
@@ -128,7 +130,7 @@ export const Login = (props) => {
     };
 
     const login = () => {
-        axios.post('http://localhost:5000/login', user).then(res => {
+        axios.post('https://bigbaskets.herokuapp.com/login', user).then(res => {
             console.log(res)
             alert(res.data.message)
          //   props.setLoginUser(res.data.user)

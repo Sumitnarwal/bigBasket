@@ -8,6 +8,8 @@ import { Navbar } from './pages/navbar'
 
 function App() {
   const loadScript = (src) => {
+
+
     return new Promise((resolve) => {
       const script = document.createElement("script");
       script.src = src;
@@ -26,8 +28,8 @@ function App() {
   });
   return (
     <div className="App" >
-     <Navbar/>
-    <AllRoutes/>
+     <Navbar />
+    <AllRoutes />
     <Footer/>
     </div>
   )

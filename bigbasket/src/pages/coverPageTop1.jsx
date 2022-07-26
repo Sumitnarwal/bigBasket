@@ -1,4 +1,5 @@
 import { useState, useEffect,useRef} from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 
 var covers = [
@@ -14,9 +15,10 @@ var covers = [
 export const CoverPicTop = () => {
         const [image, setImage] = useState(0);
         const timeoutRef = useRef(null);
-       
+        const navigate=useNavigate()
 
         function resetTimeout() {
+           
             if (timeoutRef.current) {
               clearTimeout(timeoutRef.current);
             }
@@ -34,7 +36,10 @@ export const CoverPicTop = () => {
     return (
         <div>
             {
-                <img className="slide" src={covers[image]} alt="" />
+
+                
+                <img onClick={()=>navigate("/Beverages")} className="slide" src={covers[image]} alt="" />
+              
             }
         </div>
     )

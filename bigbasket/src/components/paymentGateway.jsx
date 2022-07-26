@@ -1,51 +1,51 @@
 import axios from "axios";
 import { useEffect } from "react";
+import { Navigate } from "react-router";
 
-// const getData = () => {
+
+// const getDataDelete=()=>{
+//   console.log("hello")
 //   axios({
-//       url: "https://bgbskt.herokuapp.com/addtocart",
-//       method: "DELETE"
+//     url: "http://localhost:7005/addtocart",
+//     method: "DELETE"
 //   }).then((res) => {
-//       //setCartp(res.data)
-//       console.log(res)
+//    <Navigate to={"/"} replace={true}/>
 //   })
 // }
 
-
-export default async function displayRazorpay(sum) {
-    const data = await fetch(`http://localhost:1337/razorpay?price=${sum}`, {
-      method: "POST",
-    }).then((t) => t.json())
-  
-    console.log(data);
-  
-
-  //   useEffect(() => {
-  //     getData()
-  // }, [a,handleDelteteFcart])
-  
+export default async function displayRazorpay(sum,getDataDelete) {
+  const data = await fetch(`https://bigbaskets.herokuapp.com/razorpay?price=${sum}`, {
+    method: "POST",
+  }).then((t) => t.json())
+  //console.log(data);
 
 
-    const options = {
-      key: "rzp_test_XmZRCQRG4zhL6B",
-      currency: data.currency,
-      amount: data.amount,
-      name: "Divash Upadhyay",
-      description: "Wallet Transaction",
-      image: "http://localhost:1337/logo",
-      order_id: data.id,
-      handler: function (response) {
-        alert("PAYMENT ID ::" + response.razorpay_payment_id);
-        alert("ORDER ID :: " + response.razorpay_order_id);
-      },
-      prefill: {
-        name: "Divash Upadhyay",
-        email: "dishuupadhyay507@gmail.com",
-        contact: "9560916993",
-      },
-    };
+  const options = {
+    key: "rzp_test_XmZRCQRG4zhL6B",
+    currency: data.currency,
+    amount: data.amount,
+    name: "Big Basket",
+    description: "Wallet Transaction",
+    image: "https://bigbaskets.herokuapp.com/logo",
+    order_id: data.id,
+    handler: function (response) {
+      alert("PAYMENT ID ::" + response.razorpay_payment_id);
+      alert("ORDER ID :: " + response.razorpay_order_id)
+        getDataDelete()
+    },
+    prefill: {
+      name: "BigBasket",
+      email: "sumitnarwal@gmail.com",
+      contact: "9467810223",
+    },
+  };
+
+  const paymentObject = new window.Razorpay(options);
+  paymentObject.open();
+
   
-    const paymentObject = new window.Razorpay(options);
-    paymentObject.open();
-  }
-  
+}
+
+
+
+

@@ -1,4 +1,5 @@
 import { useState, useEffect,useRef} from "react";
+import { useNavigate } from "react-router";
 
 
 var covers = [
@@ -14,7 +15,7 @@ var covers = [
 export const CoverPiclanding3 = () => {
         const [image, setImage] = useState(0);
         const timeoutRef = useRef(null);
-       
+        const navigate=useNavigate()
 
         function resetTimeout() {
             if (timeoutRef.current) {
@@ -34,7 +35,7 @@ export const CoverPiclanding3 = () => {
     return (
         <div>
             {
-                <img className="slide" src={covers[image]} alt="" />
+                <img onClick={()=>navigate("/Beverages")} className="slide" src={covers[image]} alt="" />
             }
         </div>
     )

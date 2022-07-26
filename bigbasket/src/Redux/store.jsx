@@ -1,6 +1,8 @@
 import { applyMiddleware, combineReducers, compose, legacy_createStore } from "redux";
 import thunk from "redux-thunk";
-import { cartReducer } from "./cart/reducer";
+//import { cartReducer } from "./cart/reducer";
+
+import { cartReducer } from "./cart2/reducer";
 import { productReducer } from "./reducer";
 
 const rootReducer=combineReducers({ecommerceData:productReducer,
