@@ -29,7 +29,7 @@ export const Beverage = () => {
    // console.log("currentProd",currentProd)
     const [id, setId] = useState("")
     const [pro, setPro] = useState([])
-    const [orderShort, setOrder] = useState("")
+    const [orderShort, setOrder] = useState("asc")
 
     const dispatch = useDispatch()
     useEffect(() => {

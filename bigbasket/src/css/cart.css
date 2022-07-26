@@ -1,26 +1,38 @@
 
 #cartPage{
     width: 90%;
-   margin-left: 10%;
-    border: 1px solid black;
-    padding: 20px;
    
+    /* border: 1px solid black; */
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin: auto;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+   
+}
+#cartbttn{
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 #numberCart{
     font-size: 30px;
     text-align: left;
     color: rgb(104, 101, 101);
+    
 }
 #btncart button{
     padding: 0px 10px;
     border-radius: 10px;
     border: 1px solid orange;
-    font-size: 14px;
+    font-size: 18px;
+    margin-left: 30px;
+    font-weight: 500;
 }
 #btncart{
     margin-top: 10px;
    margin-left: 0%;
-   width: 200px;
+  
+   display: flex;
 }
 #btncross{
     margin-left: 20px;

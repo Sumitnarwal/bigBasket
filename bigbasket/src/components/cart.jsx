@@ -11,23 +11,23 @@ import { useNavigate } from "react-router"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { fetchCart } from "../Redux/cart2/action"
-import {deleteProductCart} from "../Redux/cart2/action"
+import { deleteProductCart } from "../Redux/cart2/action"
 export const Cart = () => {
     const navigate = useNavigate()
-  //  const currentProd = useSelector((store) => store.cartData.cartItems)
-  const cartp=useSelector((store)=>store.cartData.cart)
+    //  const currentProd = useSelector((store) => store.cartData.cartItems)
+    const cartp = useSelector((store) => store.cartData.cart)
     const dispatch = useDispatch()
-   // const [cartp, setCartp] = useState([])
+    // const [cartp, setCartp] = useState([])
     const [a, seta] = useState(0) ////This need to correct make page render again after delete
     let sum = 0
     for (let i = 0; i < cartp.length; i++) {
         sum += cartp[i].price
     }
     const handleAddress = () => {
-        if(sum>0){
+        if (sum > 0) {
 
             navigate("/address", { return: true })
-        }else{
+        } else {
 
             alert("Please add some products")
         }
@@ -36,35 +36,34 @@ export const Cart = () => {
     const handleDelteteFcart = (id) => {
         seta(a + 1)
         dispatch(deleteProductCart(id))
-   
+
 
 
     }
-    // useEffect(() => {
-    //     getData()
-    // }, [a,handleDelteteFcart])
-
-    // const getData = () => {
-    //     axios({
-    //         url: "https://bgbskt.herokuapp.com/addtocart",
-    //         method: "GET"
-    //     }).then((res) => {
-    //         setCartp(res.data)
-    //     })
-    // }
-    useEffect(()=>{
+    const    getDataDelete=()=>{
+        // const navigate=useNavigate()
+        axios({
+          url: "https://bigbaskets.herokuapp.com/addtocart",
+          method: "DELETE"
+        }).then((res) => {
+          dispatch(fetchCart())
+        })
+      }
+    
+    useEffect(() => {
         dispatch(fetchCart())
+    }, [])
 
-    },[])
-   
     ////////////////////////////////////////
 
     return (
         <div id="cartPage">
             <div id="numberCart">Your Basket ({cartp.length} items)</div><hr />
-            <div id="btncart"> <button>VIEW AVAILABLE PROMOS</button></div>
-            <div>
-                <TableContainer>
+            <div id="btncart"> <button>VIEW AVAILABLE PROMOS</button> 
+            <button onClick={getDataDelete}>Delete All Cart items</button>
+            </div>
+            <div id="cartbttn">
+                <TableContainer >
                     <Table variant='simple'>
                         <Thead>
                             <Tr color={"white"}>
@@ -76,7 +75,7 @@ export const Cart = () => {
                             </Tr>
                         </Thead>
                         <Tbody>
-                            {cartp.map((item,i) => (
+                            {cartp.map((item, i) => (
                                 <Tr key={i}>
                                     <Td>{item.title}</Td>
                                     <Td>Rs. {(item.price).toFixed(2)}</Td>

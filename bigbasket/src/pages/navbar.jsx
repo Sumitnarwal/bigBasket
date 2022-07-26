@@ -74,7 +74,6 @@ console.log("username",username)
     //         setCartp(res.data)
     //     })
     // }
-
     return (
         <div>
             <div id="navbar" >
@@ -109,10 +108,6 @@ console.log("username",username)
                                 <div id="k23btn">
                                     <button id="btnnav" onClick={() => navigate("/Register")}>{username?username:"sigin/Login"}</button>
                                 </div>
-                                {
-                                    //   <Login />
-                                }
-
                                 <div>
                                     <AiOutlineDown />
                                 </div>
@@ -135,8 +130,7 @@ console.log("username",username)
                     </div>
                 </div>
                 <div id="MenuItem">
-
-                    <Menu bg={"black"} >
+                    <Menu bg={"black"}  >
                         <MenuButton id="catagory" bg={"green"} as={Button} >
                             SHOP BY CATEGORY <AiOutlineDown />
                         </MenuButton>
