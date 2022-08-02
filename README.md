@@ -1,9 +1,9 @@
 # bigBasket
 Hey👋, this is the cloning of one of the popular daily usage products website named “bigbasket.com”. This project was assigned to me in Unit 5a construct week in Masai School. bigbasket offers customers services they won’t find anywhere else, all available to browse on practically in any device.
 
-#Deploy Link :
+<h1>#Deploy Link :</h1>
 https://bigbasket-sumitnarwal.vercel.app/
 
-#Tech Stack:
+<h1>#Tech Stack:</h1>
 HTML | CSS | JavaScript | MERN | Redux | Material UI
 
